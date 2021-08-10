@@ -1,0 +1,22 @@
+<!--
+    제어할 태그 선택하기
+        이벤트가 일어났을 때, 어떤 태그에 스타일이 지정될지 선택하는 작업이 필요하다.
+        이를 위해선 CSS 선택자를 이용해 보자 CSS 선택자에는 크게 3가지 종류가 있다. 태그 선택자, class 선택자, 그러고 id 선택자 이다.
+        
+   querySelector
+        querySelector라는 함수를 사용하면 이러한 선택자를 이용해서 원하는 태그를 선택할 수 있다. 다음과 같이 선택하며 된다.
+            document.querySelector("body")
+        이렇게 하면 페이지 내에서 body라는 이름의 태그를 모두 선택하는 것이다. 만약 js라는 class를 가진 태그를 선택하고 싶다면 따옴표 사이에 js를 쓰면 되고,
+        first라는 id를 가진 태그를 선택하고 싶다면 #first라고 쓰면 된다. 
+        
+        이제 태그를 선택했으니, 고른 태그에 스타일을 적용해 보자. 이를 위해선 다음 태그르 선택하면 된다.
+            document.querySelector("body").style.backgroundColor = "black";
+
+        body 태그를 모두 고른 뒤, 여기에 스타일을 적용하기 위햐서 style이라고 써 주고, 여러 스타일 중에서도 배경색을 지정하기 위해 backgroundColor라고 써 준 것이다.
+
+        이렇게 완성한 JavaScript 코드를 이벤트가 일어날 떄마다 실행하면 되는 것이다. 예를 들어서, 버튼을 클릭할 떄 이러한 스타일변회가 일어나도록 만들려면 다음과 같이 하면 된다.
+            <input type="button" value="night" onclick="document.querySelector('body').style.backgroundColor='black';">
+
+        
+            
+-->
