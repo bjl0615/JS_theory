@@ -1,0 +1,46 @@
+<!--
+    조건문
+        조건문이란 프로그램이 조건에 따라서 다른 기능들이 다른 순서에 따라서 실행되도록 만들어주는 것이다. 
+        조건문 단순하고 반복적인 업무 뿐만 아니라 복잡한 업무까지도 컴퓨터가 다룰 수 있도록 해준다.
+
+        
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="index.html">WEB</a></h1>
+
+    <input type="button" value="day" onclick="
+        document.querySelector('body').style.backgroundColor='white';
+        document.querySelector('body').style.color='black';
+    ">
+    <input type="button" value="night" onclick="
+        document.querySelector('body').style.backgroundColor='black';
+        document.querySelector('body').style.color='white';
+    ">
+    <input type="button" value="black" onclick="
+        if(document.querySelector('body').dataset.mode === 'day'){ 
+        document.querySelector('body').style.backgroundColor = 'black';
+        document.querySelector('body').style.color = 'white'
+        document.querySelector('body').dataset.mode = 'night';
+        this.value='day';
+        } else {
+         document.querySelector('body').style.backgroundColor = 'white';
+        document.querySelector('body').style.color = 'black'
+        document.querySelector('body').dataset.mode = 'day';
+        this.value='night';
+        }
+    ">
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, magnam.
+    </p>
+</body>
+</html>
