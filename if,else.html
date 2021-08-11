@@ -42,7 +42,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, magnam.
         </p>
     -->
-        <script>
+    <!--    <script>
         document.write('1')
         if(true){
             document.write('2')
@@ -50,12 +50,12 @@
         else {
             document.write('3')
         }
-        </script>
+        </script> -->
     <!--
         위 코드를 직접 실행해보면 12라는 결과가 출력이 된다. 3은 출력되지 않는다.
         그렇다면 다음 코드의 실행 결과는 어떨까?
     -->
-    <script>
+    <!-- <script>
         document.write('1')
         if(false){
             document.write('2')
@@ -63,7 +63,7 @@
         else {
             document.write('3')
         }
-    </script>
+    </script> -->
     <!--
         이 코드를 실핼하게되면 아까와는 달리 13이 출력되게 된다.
         그렇다면 if(true)와 if(false), 그리고 else가 어떤 역할을 하기에 이런 결과가 나오는 것일까?
@@ -74,7 +74,7 @@
         상황에 따라서 true/flase가 바뀌도록 만들어주면, 상황에 따라서 다른 코드가 실행되도록 만들어줄 수 있을 것이다.
     -->
 
-    <script>
+    <!-- <script>
         document.write('1')
         if(true){
             document.write('2')
@@ -87,6 +87,101 @@
             document.write('5')
         }
         document.write('6')
+    </script> -->
+
+    <!-- <h1><a href="index.html">WEB</a></h1>
+
+    <input id="night_day" type="button" value="night" onclick="
+        if(document.querySelector('#night_day').value === 'night'){
+            document.querySelector('body').style.backgroundColor = 'black';
+            document.querySelector('body').style.color = 'white';
+            document.querySelector('#night_day').value = 'day';
+        }
+        else{
+            document.querySelector('body').style.backgroundColor = 'white';
+            document.querySelector('body').style.color = 'black';
+            document.querySelector('#night_day').value = 'night';
+        }
+    ">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, magnam.
+        </p> -->
+   
+
+    <!--
+        토글이란 하나의 설정 값으로부터 다른 값으로 전환하는 것이다. 
+
+        조건문을 활용한 토글 만들기
+            <input id="night_day" type="button" value="night">
+        지금부터 이 버튼의 value 값을 기준으로, 이 value가 night면 day 버전으로 바뀌는 코드를, day면 night 버전으로 바뀌는 코드를 실행하도록 하자
+            if(???){
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = "white";
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black'l
+            }
+        그렇다면 저 ??? 속에는 어떤 코드가 들어가야 할까? 우리는 지금부터 document에서 id가 night_day인 버튼을 찾아서, 그 버튼의 value가 "night"인지 
+        아닌지를 찾아냐애 한다. 이를 위해선 다음과 같은 코드를 사용할 수 있다.
+            document.querySelector('#night_day').value
+        현제 페이지에서 querySelector을 사용해서 id가 night_day인 태그를 찾ㄱ 위해서 id를 나타내는 #을 붙여준다. 그리고 찾아낸 태그의 
+        value를 알기 위해서 .value를 써 준다.
+        이렇게 가죠온 value 값을 night와 비겨하면 된다. 그렇다면 다음과 같이 써준다.
+            if(document.querySelector('#night_day').value === 'night'){
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = "white";
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+            }
+        하지만 이 크드에는 결정적인 문제가 있다. 바로 버튼이 눌릴 때마다 value가 바뀌지 않는 것이다. 그렇기 때문에 항상 원래 설정된
+        value인 night에 해당하는 코드, 즉 첫 번째 중괄호에 있는 코드만 실행되게 된다. 이를 해결하기 위해서는 코드가 실행될 때마다 value를 바꿔주는 코드도 추개해주면 된다.
+            if(document.querySelecotr('#night_day').value === 'night'){
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('#night_day').value = 'day';
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                ducoment.querySelector('#night_day').vlaue = 'night';
+            }
+    -->
+
+
+    <!-- 
+    if(document.querySelector('#night_day').value === 'day') {
+        document.querySelector('body').style.backgroundColor = 'white';
+        document.querySelector('body').style.color = 'black';
+        document.querySelector('#night_day').value = 'night';
+      }
+    else {
+        document.querySelector('body').style.backgroundColor = 'black';
+        document.querySelector('body').style.color = 'white';
+        document.querySelector('#night_day').value = 'day';
+      } 
+    버튼의 onclick 속서을 다음과 같이 Javascript 코드로 바꾸었다고 해보자. 원래 구현한 토글과 차이가 있을까?
+    결론부터 말하자면 결과는 같다.
+    어늘걸 먼저 하던지 계속 day로 바뀌거나 night으로 바뀌도록 되어 있기 때문에 순서만 다를뿐 차이는 없다.
+    -->
+
+    <script>
+        function night_day(){
+            if(document.querySelector('#night_day').value === 'day') {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                document.querySelector('#night_day').value = 'night';
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = 'white';
+                document.querySelector('#night_day').value = 'day';
+            } 
+                }
     </script>
+
+    <buttion onclick="night_day()" id="night_day" type="button" value="night">Click</buttion>
 </body>
 </html>
