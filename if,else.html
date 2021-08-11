@@ -136,7 +136,7 @@
                 document.querySelector('body').style.backgroundColor = 'white';
                 document.querySelector('body').style.color = 'black';
             }
-        하지만 이 크드에는 결정적인 문제가 있다. 바로 버튼이 눌릴 때마다 value가 바뀌지 않는 것이다. 그렇기 때문에 항상 원래 설정된
+        하지만 이 코드에는 결정적인 문제가 있다. 바로 버튼이 눌릴 때마다 value가 바뀌지 않는 것이다. 그렇기 때문에 항상 원래 설정된
         value인 night에 해당하는 코드, 즉 첫 번째 중괄호에 있는 코드만 실행되게 된다. 이를 해결하기 위해서는 코드가 실행될 때마다 value를 바꿔주는 코드도 추개해주면 된다.
             if(document.querySelecotr('#night_day').value === 'night'){
                 document.querySelector('body').style.backgroundColor = 'black';
