@@ -1,0 +1,91 @@
+<!--
+    리팩토링 - this 사용하기
+        리팩토링이란 비효율적인 코드를 효율적으로 만들어서 가독성을 높이고 유지보수가 쉽도록 만드는 것이다.
+        코드의 기능적인 면에서는 변화가 없도록 말이다
+        
+            if(document.querySelector('#night_day').value === 'night') {
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = 'white';
+                document.querySelector('#night_day').value = 'day';
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                document.querySelector('#night_day').value = 'night';
+            }
+        여기에선 자기가 속한 버튼을 찾기 위해서 document.querySelector('#night_day')라는 코드를 사용했다. 
+        하지만 만약 이 코드르 복사해서 하나의 버튼을 더 만들게 된다면 어떻게 될까?
+
+        id는 하나의 태그에만 적용될 수 있으므로 새롭게 만들어진 버튼에는 새로운 id값을 적용해줘야된다.
+        예를 들어서 새롭게 만든 버튼의 id를 #night_day2리고 만들었다고 해보자.
+        그렇게 되면 이 코드에서는 모든 #night_day를 #night_day2로 직접 바꿔주는 작업을 진행해야 한다.
+        무척 비효율 적이다.
+
+        그래서 javascript에는 자기 자신을 가리키기 위한 this라는 키워드가 있다. document.querySelector('#night_day')대신 this를 써도 되는 것이다. 그러면 다음과 같이 쓸 수 있다.
+            if(this.value == 'night'){
+                document.querySelector('body').style.backgroundColor='black';
+                document.querySelector('body').style.color = 'white';
+                this.value = 'day';
+            }
+            else {
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                this.value = 'night';
+            }
+        크닥 훨씬 간결해진 것을 볼 수 있다. 그 뿐만 아니라, 이 코드는 몇 번을 복사해서 붙여넣더라도 따로 추가적인 수정 없이 계속 사용할 수 있다.
+    
+    리팩토링 - 중복 제거하기
+        두 번째로 리팩토링 해 볼 부분은 바로 document.querySelector('body')이다. 이 부분이 무려 4번이나 등장하고 있다. 
+        코딩을 할때에는 중복을 없애주는 것이 중요하다. 그렇기 때문에 이 부분을 제거해보도록 하자.
+            var targer = document.querySelector('body');
+            if(this.value === 'night'){
+                target.style.backgroundColor = 'black';
+                target.style.color = 'white';
+            }
+            else {
+                targer.style.backgruondColor = 'white';
+                target.style.color = 'black';
+                this.value = 'night';
+            }
+        이렇게 하면 target이라는 변수를 만들어서 거기에 body 태그르 찾아서 넣고 이 target 변수만 간단하게 사용해서 코드의 길이를 줄일 수 있다.
+        그 뿐 만아니라 첫 번쩨 줄만 수정해주면, target이 쓰이는 네 줄을 모두 바꿀 수 있는 장점도 가지고 있다.    
+        
+        1)다음과 같은 코드에서 리팩토링을 진행할 수 있는 부분을 찾아서 고쳐보자
+        if(document.querySelector('h1').value === 'night') {
+        document.querySelector('body').style.backgroundColor = 'black';
+        document.querySelector('h1').style.color = 'white';
+        document.querySelector('h1').value = 'day';
+        }
+        else {
+        document.querySelector('body').style.backgroundColor = 'white';
+        document.querySelector('h1').style.color = 'black';
+        document.querySelector('h1').value = 'night';
+        }
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        function night_day(){
+            var h = document.querySelector('h1');
+            var b = document.querySelector('body');
+            if(h.value === 'night') {
+            b.style.backgroundColor = 'black';
+            h.style.color = 'white';
+            h.value = 'day';
+            }
+            else {
+            b.style.backgroundColor = 'white';
+            h.style.color = 'black';
+            h.value = 'night';
+            }
+        }
+    </script>
+
+    <h1 value="night">Test</h1>
+    <input onclick="night_day()" id="night_day" type="button" value="click">
+</html>
