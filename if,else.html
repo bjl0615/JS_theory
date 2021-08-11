@@ -15,7 +15,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><a href="index.html">WEB</a></h1>
+    <!-- <h1><a href="index.html">WEB</a></h1>
 
     <input type="button" value="day" onclick="
         document.querySelector('body').style.backgroundColor='white';
@@ -37,10 +37,56 @@
         document.querySelector('body').dataset.mode = 'day';
         this.value='night';
         }
-    ">
+        "> 
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, magnam.
+        </p>
+    -->
+        <script>
+        document.write('1')
+        if(true){
+            document.write('2')
+        }
+        else {
+            document.write('3')
+        }
+        </script>
+    <!--
+        위 코드를 직접 실행해보면 12라는 결과가 출력이 된다. 3은 출력되지 않는다.
+        그렇다면 다음 코드의 실행 결과는 어떨까?
+    -->
+    <script>
+        document.write('1')
+        if(false){
+            document.write('2')
+        }
+        else {
+            document.write('3')
+        }
+    </script>
+    <!--
+        이 코드를 실핼하게되면 아까와는 달리 13이 출력되게 된다.
+        그렇다면 if(true)와 if(false), 그리고 else가 어떤 역할을 하기에 이런 결과가 나오는 것일까?
+        if문의 괄호 안에는 불리언 데이터 타입이 온다. 그리고 만약 그 불리언이 true이면 첫 번째 중괄호에 있는 코드가 실행되고 else괄호에 있는 코드는 무시된다.
+        반대로 그 불리언이 false이면 else의 중괄호에 있는 코드가 실행되고 첫 번째 중괄호에 있는 코드가 무시된다.
+        
+        지금 짠 코드에서는 괄호 안에 있는 불리언이 고정되어 있기 때문에 항상 같은 결과가 출력되게 된다. 하지만, 이 괄호 안에 있는 불리언이 
+        상황에 따라서 true/flase가 바뀌도록 만들어주면, 상황에 따라서 다른 코드가 실행되도록 만들어줄 수 있을 것이다.
+    -->
 
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, magnam.
-    </p>
+    <script>
+        document.write('1')
+        if(true){
+            document.write('2')
+        }else {
+            document.write('3')
+        }
+        if(false){
+            document.write('4')
+        }else{
+            document.write('5')
+        }
+        document.write('6')
+    </script>
 </body>
 </html>
