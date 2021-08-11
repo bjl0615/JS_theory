@@ -1,0 +1,211 @@
+<!--
+    반복문
+        반복문이란 같은 작업을 실행해주는 Javascript의 새로운 문법이다.
+        예를 들어서 다음과 같은 코드르 볼 수 있다.
+            var links = document.querySelectorAll('a');
+            var i = 0;
+            while(i<links.length){
+                links[i].style.color = "powerblue";
+                i=i+1;
+            }
+        먼저 첫 번째 줄에서는 이 페이지의 모든 a 태그를 가져온다. 그리고 그 다음부터는 반복문을 이용해서 각각의 a 태그들의 color를 
+        powerblue로 바꿔주는 것이다.
+
+    배열(Array)
+        우리가 집에 있는 물건들을 정리하기 위해서 서랍장이나 상자에 정리해서 넣듯이 프로그래밍에서도 많은 데이터를 종류별로 정리하는 방벙이 필요하다.
+        즉 배열은 서로 연관된 데이터를 정리해서 담아두는 수납상자라고 생각하면 된다.
+
+        그렇다면 배열을 만들기 위해서는 어떤 문법을 사용해야 할지 알아보자
+            var fruites=["apple","banana"]
+        배열은 다음과 같이 대괄호로 표시된다, 그리고 이 대괄호 안에 넣은 값들을 콤마(",")로 표시해서 넣어준다. 그리고 이를 변수 fruits에 넣어준다.
+        즉 과이을 fruits라는 상자에 넣어준 것이다.
+
+    배열의 값에 접근하기 
+        그렇다면 이렇게 만든 배열에 들어있는 내용을 꺼내기 위해서는 어떻게 해야 할까?
+            document.write(fruits[0]);
+        이렇게 하면 화면에 apple이 출력되게 된다. 0 대신 1을 써주면 banana가 출력된다. 즉, 앞에서부터 0번째, 1번째, ... 로 순서를 매겨서 
+        그 번호에 해당하는 값을 출력하는 것이다.
+    
+    배열의 길이
+        다음으로는 배열의 길이를 출력해보자.
+            document.write(fruits.length);
+        배열 뒤에 .length를 쓰면 그 배열의 길이를 나타내준다. 이 때 출력값은 2가 된다. 즉 배열에서 내용을 꺼낼 때에는 0부터 순서를 매기지만,
+        길이를 출력할 때에는 1부터 세서, 2개의 값이 있으니 2를 출력해주는 것이다.
+    
+    배열에 값 추가하기
+        이제 이 배열에 새로운 값을 추가해보자. 
+            fruits.push("cononut")
+        이렇게 하면 fruits라는 배열의 맨 뒤에 "coconut"이라는 값을 추가해 준다. 즉, fruits는 ["apple","banana","coconut"]이 되는 것이다.
+        
+    반복문이 필요한 이유
+            document.write('<li>1</li>');
+            document.write('<li>2</li>');
+            document.write('<li>3</li>');
+            document.write('<li>4</li>');
+        이 코드를 실행하면 화면에 1,2,3,4가 순서대로 뜬다. 각 줄의 코드가 순서대로 살행되는 것이다.
+        그런에 이 때 2번과 3번이 반복적으로 여러 번 실행되어야 한다고 생각해보자. 그러면 2번과 3번 코드를 여러번 복사, 붙여주기를 하면 된다.
+        하지만 반복 횟수가 아주 커진다면 붙여넣기도 힘들고 코드를 수정하기도 힘들 것이다. 이 때 사용하는 것이 바로 반복문이다.
+
+    반복문 
+        지금부터 while 반복문에 대해서 알아보자. while 반복문은 다음과 같이 사용한다.
+            while(???){
+                document.write('<li>2</li>');
+                document.write('<li>3</li>')
+            }
+        이 때 ???에는 if 문에서 살펴본 것과 같이 불리언 데이터 타입이 들어간다. 그리고 이 조건이 true라면 중괄호 안의 코드를 실행한다.
+        이 코드를 다 실행하고 나면 다시 처음으로 돌아가서 ???에 들어간 불리언을 살펴본다. 이 불리언이 false가 될 때까지 반복해서 코드를 실행하는 것이다.
+
+        즉 반복문과 조건문은 순서대로 실행되는 프로그램의 실행 흐름을 제어하는 제어문이다.
+
+        그렇다면 이제 while문을 사용해서 아까 살펴본 코드에서 2~2번째 줄을 3번 반복하낟고 해 보자. 이를 위해서 3번 반복했을 떄 조건이 false로 바뀌도록 ??? 안을 채워보자
+            doocumtn.write('<li>1</li>'')
+            var i = 0;
+            while (i<3){
+                document.write('<li>2</li>')
+                document.write('<li>3</li>')
+                i = i + 1;
+            }
+            document.write('<li>4</li>')
+    
+    배열과 반복문
+        이번에는 이 두 가지를 결합시켜 보자 에를 들어 다음과 같은 배열이 있다고 해 보자
+            fruits = ["apple","banana","coconut"]
+        
+        지금부터 우리는 여기에 있는 값들을 하나씩 꺼내서 HTML 리스트로 나타내보도록 하자. 반복문을 이용해서
+        여기에 있는 모든 원소들을 write하기 위해서는 3번의 반복이 필요할 것이다. 그러므로 3번 반복할 수 있는 while문을 사용해보자
+            var i = 0;
+            while(i<3){
+                document.write('<li></li>');
+                i=i+1;
+            }    
+        그럼 이제 li 태그 사이에 각각의 원소를 넣어보자. 이 때 이 i라는 변수가 0부터 2까지 바뀌기 때문에, i를 잘 활용하면서 배열에서 
+        원소를 순서대로 하나씩 꺼낼 수 있을 것이다.
+            var i = 0;
+            while(i<3){
+                documnet.write('<li>'+fruits[i]+'</li>');
+                i = i + 1;
+            }
+        하지만 여기에서 fruits라는 배열안에 "durian"이라는 원소를 하나 더 추가했다고 해 보자. 그럼녀 이 반복문은 4번 실행되어야 
+        끝까지 출력할 수 있다. 하지만 지금은 3으로 설정되어있기 때문에 durian이 출력되지 않을 것이다. 그렇다면 이를 어떻게 해결할 수 있을까?
+
+        3 대신 fruits라는 배열의 길이를 입력해주면 fruits라는 배열에 원소가 추가되거나 삭제되어도 자동으로 반복 횟수가 조정될 것이다.
+        다음과 같은 코드를 사용하면 된다.
+            var i = 0;
+            while(i < fruits.length){ 
+                documents.write('<li>'+fruits[i]+'</li>');
+                i = i+1;
+            }
+        정리하자면 배열을 사용하면 순서대로 연관된 데이터를 저장할 수 있고, 반복문을 사용하면 순서대로 이 배열의 원소를 하나씩 꺼내서 처리할 수 있기 때문에
+        이 둘을 함께 사용하면 아주 좋다는 것을 알 수 있다.
+            
+    1)반복문과 배열을 적절히 활용해서 fruits 배열을 다음과 같이 숫자와 함께 출력하려면 어떻게 해야 할지 생각해보자.
+        1. apple
+        2. banana
+        3. coconut    
+            
+            <script>
+            var fruits = ['apple','banana','coconut'];
+            </script>
+        <ol>
+            <script>
+                var i = 0;
+
+                while(i < fruits.length){
+                    document.write('<li>'+fruits[i]+" " + (i+1) + '</li>');
+                    i += 1;
+                }
+            </script>
+        </ol>
+-->
+    
+    <!--
+            <script>
+            var coweorkers = ['egoing','lezzche','duru','taeho'];
+        </script>
+        <h2>Co workes</h2>
+        <ul>
+            <script>
+                var i = 0;
+                while(i < coweorkers.length){
+                    document.write('<li><a href="http://a.com/'+coweorkers[i]+'">'+coweorkers[i]+'</a></li>');
+                    i = i + 1;
+                }
+            </script>
+        </ul> 
+    -->
+
+<!--
+    반복문과 배열의 활용
+        이제는 night/day 모드 예제에서 하이퍼링크 부분의 색깔이 모드에 따라서 바뀌도록 만들어 보자.
+
+        원래 사용하던 qerySelector라는 함수는 하나의 태그만 알려주기 때문에 새로운 함수가 필요하다.
+        바로 querySelectorAll이라는 함수다 다음과 같이 사용하면 된다.
+            var alist = document.querySelectorAll('a');
+
+        이렇게 하면 querySelectorAll이 찾은 모든 a 태그를 배열 형태로 저장하게 된다.
+        
+        그렇다면 이제 이렇게 만든 배열과 반복문을 사용해서 각각의 태그와 스타일을 지정하자. while문을 사용해서 스타일을 
+        바꿔주려고 하는데, 이 때 이 반복문을 몇 번 실행되어야 할까?
+        alist의 길이만큼 실행되면 될 것이다. 그렇다면 다음과 같이 써주면 된다.
+            var i = 0;
+            while(i < alist.length){
+                alist[i].style.color = "powderblue";
+                i = i + 1;
+            }
+        이 코드를 실행해보면 문서안의 모든 a태그의 색깔이 poderblue로 바뀌는 것을 볼 수 있다.
+        이렇게 완성한 코드를 if문 안에 넣어주면 된다.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+    <h1><a href="index.html">WEB</a></h1>
+    <input id="night_day" type="button" value="night" onclick="
+        var target = document.querySelector('body');
+        if(this.value === 'night'){
+            target.style.backgroundColor = 'black';
+            target.style.color = 'white';
+            this.value = 'day';
+
+            var alist = document.querySelectorAll('a');
+            var i = 0;
+            while(i < alist.length){
+            alist[i].style.color = 'powderblue';
+            i = i + 1;
+            }
+
+        }else {
+            target.style.backgroundColor = 'white';
+            target.style.color = 'black';
+            this.value = 'night';
+
+            var alist = document.querySelectorAll('a');
+            var i = 0;
+            while(i < alist.length){
+            alist[i].style.color = 'blue';
+            i = i + 1;
+            }
+        }
+    ">
+    
+    <ol>
+        <li><a href="1.html">HTML</a></li>
+        <li><a href="1.html">JavaScript</a></li>
+        <li><a href="1.html">CSS</a></li>
+    </ol>
+
+</body>
+</html>
+
+<!--
+    1) 위에 코드들을 약간 수정을해서 첫 번째 하이퍼 링크를 제외한 나머지 세 개의 하이퍼 링크만 색깔이 바뀌도록 만들어보자.
+        var alist = document.querySelectorAll('a');
+            var i = 1;
+            while(i < alist.length){
+            alist[i].style.color = 'blue';
+            i = i + 1;
+            }
+-->
