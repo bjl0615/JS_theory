@@ -26,12 +26,35 @@
         전송할 때 훨씬 유리해진다.
         
         마지막으로 같은 함수를 사용하면 두 코드가 논리적으로 같다는 것을 한 번에 알 수 있고, 적절한 이름을 붙여주면 이 코드가 어떤 일을 하는지 한 눈에 알 수 있다는 장점도 알 수 있다.
+
+    함수의 기본 문법
+        같은 코드가 반복될 때, 우리는 반복문을 사용해서 이를 해결하는 방법에 대해서 배웠다. 하지만 다음과 같은 상황에서 어떨까?
+            document.write('1');
+            document.write('2');
+            document.write('3');
+            document.write('4');
+            document.write('2');
+            document.write('3');
+        2를 쓰고 코드와 3을 쓰는 코드가 두 번 반복됨에도 불구하고, 그 둘 사이에 4를 쓰는 코드가 존재하기 때문에 반복문을 쓰기가 어려워 진다.
+        이럴 때 사용하는 것이 바로 함수이다.
+
+        반복되는 코드를 가지고 함수를 만들어 보자. 
+            function two(){
+                document.write('2');
+                document.write('3');
+            }
+        이제 이 코드에 two라는 이름을 붙여주었으니, 이 이름을 사용하면 된다. 다음 코드와 같이 쓰게 되면 원래와 똑같은 기능을 하면서 간결하게 나태낼 수 있다.
+            document.write('1');
+            two();
+            document.write('4');
+            two();
+        이 코드를 실행하게 되면, two()를 만날 때마다 위에서 정의된 two라는 함수의 코드를 실행하게 된다.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
+    <!-- <script>
        function nightDayhandler(self){
            var target = document.querySelector('body');
 
@@ -59,8 +82,23 @@
                }
            }
         }
-    </script>
-    <h1><a href="index.html">WEB</a></h1>
+    </script> -->
+    </head>
+    <body>
+        <ul>
+            <script>
+                function two(){
+                    document.write('<li>2-1</li>');
+                    document.write('<li>2-2</li>');
+
+                }
+                document.write('<li>1</li>');
+                two();
+                document.write('<li>3</li>');
+                two();
+            </script>
+        </ul>
+    <!-- <h1><a href="index.html">WEB</a></h1>
     
     <input id='night_day' type="button" value='night' onclick='nightDayhandler(this)'> 
     <input id='night_day' type="button" value='day' onclick='nightDayhandler(this)'> 
@@ -69,6 +107,6 @@
         <li><a href="1.html">HTML</a></li>
         <li><a href="1.html">JavaScript</a></li>
         <li><a href="1.html">CSS</a></li>
-    </ol>
-</body>
+    </ol> -->
+    </body>
 </html>
