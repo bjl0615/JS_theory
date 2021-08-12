@@ -49,42 +49,36 @@
             document.write('4');
             two();
         이 코드를 실행하게 되면, two()를 만날 때마다 위에서 정의된 two라는 함수의 코드를 실행하게 된다.
--->
+
+    함수의 입력과 출력
+        함수는 자판기에 비유할 수 있다. 저번 시간에 배운 함수는 마치 버튼이 1개만 있는 자판기와 같은 것이다. 항상 같은 코드를 반환해 주는 것이다.
+        함수란 원하는 코드에 대해 알려주면, 이에 해당하는 적절한 코드를 반환해주는 함수이다. 이름 입력화 출력이라고 한다.
+
+    매개변수와 인자
+        즉, 함수는 입력과 출력으로 이루어져 있는 것이다. 이 때 입력에 해당하는 것을 매개변수Parameter)와 인자(Argument)라고 부르고, 출력에 해당하는 것을 리턴(Return)이라고 한다.
+        다음과 같이 함수가 있다고 해보자
+            function onPlusOne(){
+                document.write(1+1);
+            }
+        이 함수는 항상 1과 1을 더해서 출력해주는 함수이다.
+        하지만, 입력값을 받아서 거기에 따라서 다른 결과를 출력하도록 만들어보자. 예를 들어서 sum(2,3)을 한다면 5가 출력되도록, sum(1,6)를 하면 7이 되도록 만들어 보자.
+            function sum(left, right){
+                document.write(left + right);
+            }    
+        이 떄 sum의 괄호 안에 들어오는 두 숫자를 각각 left,right라는 변수에 넣는 것이다. 이 때 이러한 변수를 매개변수라고 부른다.
+        이제 이렇게 정의한 함수를 사용해 보자. 다음과 같이 사용할 수 있다.
+            sum(2,3);
+        이 때 sum의 괄호 안에 넣어서 함수로 전달해주는 저 숫자 2,3을 보고 인자라고 한다.    
+    -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
-    <!-- <script>
-       function nightDayhandler(self){
-           var target = document.querySelector('body');
-
-           if(self.value === 'night'){
-                target.style.backgroundColor = 'black';
-                target.style.color = 'white';
-                self.value='day';
-
-                var alist = document.querySelectorAll('a');
-                var i = 0;
-                while(i < alist.length){
-                    alist[i].style.color = 'powderblue';
-                    i = i + 1;
-                }
-           }  else {
-               target.style.backgroundColor = 'white';
-               target.style.color = 'black';
-               self.value='night';
-
-               var alist = document.querySelectorAll('a');
-               var i = 0;
-               while(i < alist.length){
-                   alist[i].style.color = 'red';
-                   i = i + 1;
-               }
-           }
-        }
-    </script> -->
     </head>
     <body>
+        <h1>Function</h1>
+
+        <h2>Basic</h2>
         <ul>
             <script>
                 function two(){
@@ -98,15 +92,20 @@
                 two();
             </script>
         </ul>
-    <!-- <h1><a href="index.html">WEB</a></h1>
-    
-    <input id='night_day' type="button" value='night' onclick='nightDayhandler(this)'> 
-    <input id='night_day' type="button" value='day' onclick='nightDayhandler(this)'> 
 
-    <ol>
-        <li><a href="1.html">HTML</a></li>
-        <li><a href="1.html">JavaScript</a></li>
-        <li><a href="1.html">CSS</a></li>
-    </ol> -->
+        <h2> Parameter<!-- (매개변수) --> & Argument<!-- (인자) --> </h2>
+            <script>
+                function onePlusOne(){
+                    document.write(1+1+'<br>');
+                }
+                function sum(left, right){
+                    document.write(left+right+'<br>');
+                }
+                onePlusOne();
+                sum(2,3);
+                sum(3,4);
+            </script>
+
+        <h2> Return </h2>
     </body>
 </html>
