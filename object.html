@@ -1,0 +1,86 @@
+<!--
+    객체
+        우리는 코드의 정리정돈을 위해서 함수라는 개념을 사용했다 객체 또한 이러한 목적을 가지고 사용되는 방법이다.
+        객체는 함수의 기반 위에서 존재하는 개념이다. 서로 연관된 함수와 변수가 많아지면 이를 정리하기 위해서 사용하는 것이다.
+
+        먼지 이전까지 했던 코드들을 가시 살펴보자 이전에 배열과 반복문을 활용해서 하이퍼링크의 색깔을 바꾸어주는 코드르 썼었다.
+        이 부분을 함수로 바꿔주자.
+            function LinksColor(color){
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i < alist.length){
+                    alit[i].style.color = color;
+                    i = i + 1;
+                }
+            }
+        
+        그러면 이제 하이퍼 링크 색깔을 바꾸어야 하는 부분에서 다음과 같이 사용할 수 있다.
+            setColor("powderblue");
+        
+        같은 방법으로 배경과 글자의 색을 바꾸는 코드도 따로 함수로 만들어 보자. 이 떄 함수의 이름이 겹치지 않도록 하는데 주의하자
+            function BodySetColor(color){
+                document.querySelector('body').style.color = color;
+            }
+
+            function BodySetBackgroundColor(color){
+                docment.querySelector('body').style.backgroundColor = color;
+            }
+        
+        이렇게 다양항 함수들이 존재하는 상황에서 우리는 객체를 사용하면 된다. 예를 들어서 함수의 종류가 아주 많아지게 되면 이 함수들끼리의 중복되지 않도록 하기 위해서 굉장히 복잡한 이름을 사용해야 된다.
+
+        이 때 객체를 사용하면 이 함수들을 비슷한 것들끼리 그룹을 만들어 묶어줄 수 있다. 마치 우리의 컴퓨터에서 폴더를 만들어서 정리한느 것과 비슷한 상화이다.
+        이렇게 나뉜 함수들은 서로 다른 그룹끼리 이름이 겹쳐도 괜찮다.
+
+        우리는 Javascript에서 이미 이러한 객체를 사용해본 경험이 있다.
+            document.querySelector('body');
+        여기에서 docuemnt가 바로 객체이고, querySelecotr가 document라는 객체 속에 있는 함수라고 생각할 수 있는 것이다.
+        이렇게 객체에 속해 있는 함수들은 메소드(Method)라는 별도의 이름으로 부르게 된다. 
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+            function LinksSetColor(color){
+                var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        alist[i].style.color = color;
+                        i = i + 1;
+                    }
+            }
+
+            function BodySetColor(color){
+                document.querySelector('body').style.color = color;
+            }
+            
+            function BodySetbackground(color){
+                document.querySelector('body').style.backgroundColor = color;
+            }
+            function nightDayhandler(self){
+                if(self.value === 'night'){
+                    Body.setbackground('black')
+                    Body.setColor('white')
+                    self.value = 'day';
+                    
+                    
+                    Links.setColor('powderblue');
+                } else {
+                    Body.setbackground('white')
+                    Body.setColor('black')
+                    self.value = 'night'
+
+                    Links.setColor('blue');
+                }
+            }
+    </script>
+</head>
+<body>
+    <h1><a href="index.html">WEB</a></h1>
+    <input id='night_day' value='night' type='button' onclick="nightDayhandler(this);">
+    
+</body>
+</html>
