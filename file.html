@@ -1,0 +1,56 @@
+<!--
+    파일을 이용해 코드 정리하기
+        지금까지 night/day 버튼을 여러 페이지에도 복사/붙여넣기 한다고 해보자. 
+        이 때 우리는 <input>태그 외에도 만들어 놓은 JavaScript 코드끼리 복사하고 붙여넣어야 한다.
+        하지만 붙여넣어야 할 페이지가 아주 많다고 생각을 해보자. 그렇게 되면 코드를 넣기도 힘들고, 수정하기도 힘들어진다. 
+        이러한 상황에서 사용할 수 있는 방법이 바로 파일로 쪼개는 것이다.
+
+        새로운 js 파일을 만들어 보자. 예를 들어서 color.js라는 파일 이름으로 만들었다고 해 보자. 
+        그리고 그 파일에 모든 페이지에서 공통적으로 사용되는 Javascript 코드를 넣는다.
+
+        그렇다면 원래 Javascript 코드가 있었던 <script> 태그는 어떻게 바꾸면 될까? 다으과 같이 src 속성에 이 파일 이름을 넣어서 바꾸면 된다.
+            <script src='color.js'></script>
+        이렇게 바꾼 후 페이지를 실행해보면, 웹브라우저가 color.js 파일을 자동으로 가져와서 원래와 똑같이 작동하는 것을 볼 수 있다.
+    
+    파일 이용의 장점
+        이제 이 짧은 script 코드르 필요할 페이지에 붙여서 넣으면 Javascript 코드를 한 번에 관리할 수 있는 것이다. 즉, 코드를 재사용할 수 있고,
+        동시에 코드를 수정할 수 있어서 유지보수가 편리해진다. 코드가 명확해지고 가독성이 좋아진다는 장점도 있다.
+        
+        이렇게 파일을 분리하면 캐시으 입장에서도 장점을 가진다. color.js라는 파일을 한 번 다운로드 해서 캐시에 저장해두면 다운로드 없이 사용할 수 있기 때문에 더 빨리 페이지를 표시할 수 있는 것이다. 
+
+        1) 여러 js파일을 가져오고 싶다면 어떻게 하면 좋을지 알아보자.
+            <script src="1.js"></script>
+            <script src="2.js"></script>   
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="colors.js"></script>
+</head>
+<body>
+    <h1><a href="file.html">WEB</a></h1>
+    <input id='night_day' value='night' type='button' onclick="nightDayhandler(this);">
+
+    <ol>
+        <li><a href="1.html">HTML</a></li>
+        <li><a href="2.html">CSS</a></li>
+        <li><a href="3.html">Javascript</a></li>
+    </ol>
+    <h2>WEB</h2>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        Impedit, quam! Repellat iste corrupti ipsa pariatur at in delectus 
+        tenetur voluptatem minus ratione architecto, quo aliquid natus? Incidunt, 
+        nam non quo a exercitationem asperiores dolores voluptatem deserunt? Iste omnis
+        dolores similique cumque suscipit repellendus et, animi nemo ipsam nesciunt co
+        rporis pariatur earum necessitatibus laudantium nam, vitae, quo aliquid? Sequi
+        audantium fugiat modi necessitatibus repellat praesentium asperiores expedit
+        a non voluptatem ex? Illum tempore iste ullam architecto eligendi cum maxime 
+        deleniti odit dignissimos enim nobis quod, aliquid non distinctio harum debit
+        is consequatur ex natus hic sunt doloribus totam asperiores nulla! Sint, ipsu
+        m atque.
+    </p>
+</body>
+</html>
