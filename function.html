@@ -90,14 +90,75 @@
             function sum(left, right){
                 return left + right;
             }
+    
+    함수의 활용
+        함수는 코드 리팩토링을 할 때 자주 사용하는 방법 중 하나이다.
+        
+        먼저 버튼에 사용되는 javascript 코드를 함수로 만들어 따로 정해준다. 함수의 이름은 nightdayhandler이라고 지어준다. 그리고 이 함수르 onClikc에 넣어준다.
+            <script>
+                function nightdayhadnler(){
+                    if(this.value ==== 'night'){
+                        //생략
+                        //아주 긴 Javascript 코드를 여기 넣어준다.
+                    }
+                }
+            </script>
+
+            <input id='night_day' type='button' value='night' onclick='nightdayhandler();'>
+        하지만 이 상태로 실행해보면 정상적으로 작동하지 않는 것을 볼 수 있다. 이유가 무엇일까? 바로 코드 내에 포함되어 있는 
+        this때문이다. this는 그 코드가 포함되어 있는 태그를 가리키는데, 지금은 this가 정상적으로 버튼을 가리키지 못하고 있기 때문이다.
+
+        이를 어떻게 해결할 수 있을까? 바로 우리가 배운 매개변수와 인자를 활용하면 된다.
+        nightdayhandler 함수를 사용할 때 this를 사용해서 태그를 전달해주고, nighthandler 함수에서는 이를 매개변수로 받아서 사용하는 것이다. 그러면 다음과 같이 코드를 작성할때 사용할 수 있다.
+            <script>
+                function nightdayhandler(self){
+                    if(self.value === 'night'){
+                        //생략
+                        //아주 긴 Javascript 코드를 여기 넣어준다.
+                    }
+                }
+            </script>
+            
+            <input id='night_day' type='button' value='night' onclick='nightdayhandler(this);'>
+        즉, 함수에서는 this를 self라는 매개변수에 받아와서, 이를 이용해서 나머지 코드를 진행하는 것이다.
+        
     -->
+        
 <!DOCTYPE html>
 <html lang="en">
     <head>
     <meta charset="UTF-8">
+        <script>
+            function nightDayhandler(self){
+                var target = document.querySelector('body');
+                if(self.value === 'night'){
+                    target.style.backgroundColor = 'black';
+                    target.style.color = 'white';
+                    self.value = 'day';
+
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        alist[i].style.color = 'powderblue';
+                        i = i + 1;
+                    }
+                } else {
+                    target.style.backgroundColor = 'white';
+                    target.style.color = 'black';
+                    self.value = 'night'
+
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        alist[i].style.color = 'blue';
+                        i = i + 1;
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
-        <h1>Function</h1>
+        <!-- <h1>Function</h1>
 
         <h2>Basic</h2>
         <ul>
@@ -114,7 +175,7 @@
             </script>
         </ul>
 
-        <h2> Parameter<!-- (매개변수) --> & Argument<!-- (인자) --> </h2>
+        <h2> Parameter(매개변수) & Argument(인자)</h2>
             <script>
                 function onePlusOne(){
                     document.write(1+1+'<br>');
@@ -135,6 +196,11 @@
                 document.write(sum2(2,3)+'<br>');
                 document.write('<div style="color:red">'+sum2(2,3)+'</div>');
                 document.write('<div style="font-size:3rem;">'+sum2(2,3)+'</div>');
-            </script>
+            </script> 
+        -->
+
+        <h1><a href="index.html">WEB</a></h1>
+        <input id='night_day' value='night' type='button' onclick="nightDayhandler(this);">
+        <input id='night_day' value='night' type='button' onclick="nightDayhandler(this);">
     </body>
 </html>
