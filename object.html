@@ -67,7 +67,33 @@
                 document.write(conturies.asia + "<br>");
                 document.write(conturies.europe + "<br>");
 
-        
+    객체의 순회
+        이번에는 객체에 있는 모든 값들을 가져오는 방법에 대해서 알아보자.
+        배열에서는 반복문을 사용했다. 이러한 기능을 반복순회(iteration)이라고 부른다.
+        객체에는 for in이라는 것을 사용하게 된다. 다음의 코드를 살펴보자.
+            var coworkers = {
+                "programer" : "egoing",
+                "designer" : "leezche"
+            };
+
+            for(var key in coworkers){
+                document.write(key+'<br>');
+            }
+        for을 쓰면 coworkers에 있는 이름들을 하나씩 가져오게 된다. 그리고 이 이름을 차례대로 key에 넣어준다. 그러면 그 key들이 차례대로 출력된다.
+        결과적으로 programer와 designer가 출력될 것이다.
+
+        그렇다면 이름 대신 그 이름에 해당하는 값을 출력하고 싶다면 어떻게 하면 될까? 이 key를 이용하면 된다. 다음과 같이 코드를 작성하면 된다.
+            for(var key in coworkers){
+                document.write(coworkers[key]+'<br>');
+            }
+
+        1) 그 전에 만든 countries라는 객체에서, 모든 객체의 이름과 값을 출력하는 코드를 만들어 보자.
+                var countries = {};
+                countries.asia = 'Korea';
+                countries["europe"] = "england";
+                for(var key in countries){
+                    document.write(key + ' : ' + countries[key] + '<br>');
+                }
 -->
 
 <!DOCTYPE html>
@@ -90,5 +116,13 @@
         coworkes["data scientist"] = "taeho";
         document.write("data scientist : " + coworkes["data scientist"]+'<br>');
     </script>
+
+    <h2>Iterate</h2>
+    <script>
+        for(var key in coworkes){
+            document.write(key + ' : ' + coworkes[key]+'<br>');
+        }
+    </script>
+
 </body>
 </html>
