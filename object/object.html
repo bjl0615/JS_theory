@@ -1,0 +1,244 @@
+<!--
+    객체
+        우리는 코드의 정리정돈을 위해서 함수라는 개념을 사용했다 객체 또한 이러한 목적을 가지고 사용되는 방법이다.
+        객체는 함수의 기반 위에서 존재하는 개념이다. 서로 연관된 함수와 변수가 많아지면 이를 정리하기 위해서 사용하는 것이다.
+
+        먼지 이전까지 했던 코드들을 가시 살펴보자 이전에 배열과 반복문을 활용해서 하이퍼링크의 색깔을 바꾸어주는 코드르 썼었다.
+        이 부분을 함수로 바꿔주자.
+            function LinksColor(color){
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i < alist.length){
+                    alit[i].style.color = color;
+                    i = i + 1;
+                }
+            }
+        
+        그러면 이제 하이퍼 링크 색깔을 바꾸어야 하는 부분에서 다음과 같이 사용할 수 있다.
+            setColor("powderblue");
+        
+        같은 방법으로 배경과 글자의 색을 바꾸는 코드도 따로 함수로 만들어 보자. 이 떄 함수의 이름이 겹치지 않도록 하는데 주의하자
+            function BodySetColor(color){
+                document.querySelector('body').style.color = color;
+            }
+
+            function BodySetBackgroundColor(color){
+                docment.querySelector('body').style.backgroundColor = color;
+            }
+        
+        이렇게 다양항 함수들이 존재하는 상황에서 우리는 객체를 사용하면 된다. 예를 들어서 함수의 종류가 아주 많아지게 되면 이 함수들끼리의 중복되지 않도록 하기 위해서 굉장히 복잡한 이름을 사용해야 된다.
+
+        이 때 객체를 사용하면 이 함수들을 비슷한 것들끼리 그룹을 만들어 묶어줄 수 있다. 마치 우리의 컴퓨터에서 폴더를 만들어서 정리한느 것과 비슷한 상화이다.
+        이렇게 나뉜 함수들은 서로 다른 그룹끼리 이름이 겹쳐도 괜찮다.
+
+        우리는 Javascript에서 이미 이러한 객체를 사용해본 경험이 있다.
+            document.querySelector('body');
+        여기에서 docuemnt가 바로 객체이고, querySelecotr가 document라는 객체 속에 있는 함수라고 생각할 수 있는 것이다.
+        이렇게 객체에 속해 있는 함수들은 메소드(Method)라는 별도의 이름으로 부르게 된다. 
+
+    객체의 읽기와 쓰기
+        우리는 이전에 배열에 대해서 배운 적이 있다. 어떤 값들을 순설 가지도록 저장하는 구조였다. 그렇다면 순서 없이 저장하는 구조도 없어야 된다. 그것이 바로 객체이다.
+
+        객체에는 순서가 없는 대신 각각에 이름을 붙어 있다. 이름을 이용해서 값들을 꺼내고 넣는 것이다.
+        그렇다면 지금부터 객체의 문법에 대해서 살펴보도록 하자.
+            var conworkers = {
+                "programmer":"egoing",
+                "designer":"leezche"
+            };            
+
+        객체를 만들 때에는 배열과는 달리 중괄호를 사용한다. 그리고 각 요소들은 각각 이름과 값으로 이루어져 있다. 
+        예를 들면 egoing이라는 깂에는 programer이라는 이름표가 붙어있는 것이다.
+
+        그렇다면 이 요소들을 꺼낼 때에는 어떻게 해야 할까? 다음과 같이 써주면 된다.
+             document.write(coworkes.programmer)
+             document.write(coworkers["programmer"])
+        이렇게 쓰면 coworkers라는 객체 안에 programmer이라는 이름을 가진 값을 가져와서 출력하게 된다. 첫 번째 줄과 두 번째 줄의 코드 모두 같은 결과를 출력하게 된다.
+
+        다음으로는 객체에 요소를 추가해 보자.
+            coworkers.bookkeeper = "duru";
+            coworkers["bookkepper"] = "duru";
+        이런 코드를 실행하게 되면 coworkers라는 객체 안에 bookkeeper이라는 이름으로 duru라는 값을 넣는 것이다. 두 줄 모두 같은 작업을 실행하게 된다.
+        하지만 만약에 이름 앞에 공백이 있다면 첫 번째 줄의 코드처럼 오류가 나기 때문에 두 번째 줄처럼 써 주어야 한다.
+        
+        1) countries라는 이름의 빈 객체르 만들고, asia라는 이름을 가진 korea라는 값과, europe이라는 이름을 가진 england라는 값을 값을 추가해 보자.
+                var countries = {};
+                countries.asia = "Korea";
+                countries["europe"] = "england";
+                document.write(conturies.asia + "<br>");
+                document.write(conturies.europe + "<br>");
+
+    객체의 순회
+        이번에는 객체에 있는 모든 값들을 가져오는 방법에 대해서 알아보자.
+        배열에서는 반복문을 사용했다. 이러한 기능을 반복순회(iteration)이라고 부른다.
+        객체에는 for in이라는 것을 사용하게 된다. 다음의 코드를 살펴보자.
+            var coworkers = {
+                "programer" : "egoing",
+                "designer" : "leezche"
+            };
+
+            for(var key in coworkers){
+                document.write(key+'<br>');
+            }
+        for을 쓰면 coworkers에 있는 이름들을 하나씩 가져오게 된다. 그리고 이 이름을 차례대로 key에 넣어준다. 그러면 그 key들이 차례대로 출력된다.
+        결과적으로 programer와 designer가 출력될 것이다.
+
+        그렇다면 이름 대신 그 이름에 해당하는 값을 출력하고 싶다면 어떻게 하면 될까? 이 key를 이용하면 된다. 다음과 같이 코드를 작성하면 된다.
+            for(var key in coworkers){
+                document.write(coworkers[key]+'<br>');
+            }
+
+        1) 그 전에 만든 countries라는 객체에서, 모든 객체의 이름과 값을 출력하는 코드를 만들어 보자.
+                var countries = {};
+                countries.asia = 'Korea';
+                countries["europe"] = "england";
+                for(var key in countries){
+                    document.write(key + ' : ' + countries[key] + '<br>');
+                }
+
+    객체의 메소드
+        객체에는 다양한 것들을 담을 수 있다. 심지어는 함수까지 담을 수 있다.
+
+        예를 들어서 coworkers라는 객체를 생각해보자. 우리는 이 객체에 새로운 함수, 즉 메소드를 추가할 것이다.
+        바로 showAll()이라는 메소드 이다. 다음과 같이 작성하면 된다.
+            coworkers.showAll = function(){
+                for(var key in coworkers){
+                    docuemnt.write(key + ' : ' + coworkers[key] + '<br>');
+                }
+            }
+        즉, coworkers에서만 사용할 수 있는 showAll이라는 메소드를 추가하게 된 것이다.
+        
+        하지만 이 방법은 그렇게 좋은 방법이 아니다. 왜냐하면 coworkers라는 변수 이름이 바뀌면 함수를 수정해야 하기 때문이다. 이때 사용하는 것이 바로 this이다.
+        coworkers 대신에 이 메소드가 쓰인 객체를 가리키는 this를 사용해주면 된다. 다음과 같이 수정하며 된다.
+            coworkers.showAll = function(){
+                for(var key in this){
+                    document.write(key + ' : ' + this[key]+'<br>');
+                }
+            }
+
+    객체의 프로퍼티
+        이렇게 객체에 해당하는 함수들은 메소드라고 부른다. 그리고 객체에 해당하는 변수들도 있다. 예를 들면 coworkers.programmer에서 programmer에 해당하는 것들이다.
+        이런 변수들은 프로퍼티(property)라고 부른다.
+
+
+        1) 조건문을 사용해서 key가 programmer일 때만 출력하는 메소드 pringProgrammer()을 만들어 보자.
+                coworekers.printProgrammer = function(){
+                    for(var key in this){
+                        if(key === 'programmer'){
+                            document.wrtie(key + ' : ' + this[key] + '<br>');
+                        }
+                    }
+                }
+                coworkers.printProgrammer();
+
+    객체의 활용
+        함수들의 이름이 겹치지 않도록 하기 위해서 많은 노력을 기울였다. 객체를 활용해서 이런 문제점들을 해결해 보자
+        
+        먼저 Body라는 이름의 객체를 다음과 같이 만들어 보자.
+            var Body{
+                setColor: function(color){
+                    document.querySelector('body').style.color = color;
+                },
+                setBackgroundColor : function(color){
+                    document.querySelector('body').style.backgroundColor = color;
+                }
+            }
+        
+        링크에 대해서도 이러한 작업을 하기 위해서 Links라는 객체를 만들어 보자.
+            var Links = {
+                setColor : function(color){
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alst.length){
+                        alist[i].style.color = color;
+                        i = i + 1;
+                    }
+                }
+            }
+
+        이렇게 만들면 Body와 Links에 모두 setColor이라는 함수가 존재하게 된다. 하지만 이 둘을 사용할 때에는 다음과 같이 다르게 사용하게 된다.
+            Body.setColor('black');
+            Links.setColor('powderblue');
+        
+        함수의 이름이 같아도 다른 객체에 소속된 메소드이기 때문에 충돌이 일어나지 않는 것이다.
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        var Body = {
+            setColor: function(color){
+                document.querySelector('body').style.color = color;
+            },
+            setBackgroundColor : function(color){
+                document.querySelector('body').style.backgroundColor = color;
+            }
+        };
+
+        var Links = {
+            setColor : function(color){
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i < alist.length){
+                    alist[i].style.color = color;
+                    i = i + 1;
+                }
+            }
+        };
+        function nightDayhandler(self){
+            if(self.value === 'night'){
+                Body.setBackgroundColor('black');
+                Body.setColor('white');
+                Links.setColor('powderblue');                
+                self.value = 'day';
+            } else {
+                Body.setBackgroundColor("white");
+                Body.setColor('black');
+                Links.setColor('blue');                
+                self.value = 'night';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<!-- 
+    <h1>Object</h1>
+    <h2>Create</h2>
+    <script>
+        var coworkes = {
+            "programer" : "egoing",
+            "designer" : "leezche"
+        };
+        document.write("programer : " + coworkes.programer+'<br>');
+        document.write("designer : " + coworkes.designer+'<br>');
+        coworkes.bookkeeoer = "duru";
+        document.write("bookkeeoer : " + coworkes.bookkeeoer+'<br>');
+        coworkes["data scientist"] = "taeho";
+        document.write("data scientist : " + coworkes["data scientist"]+'<br>');
+    </script>
+
+    <h2>Iterate</h2>
+    <script>
+        for(var key in coworkes){
+            document.write(key + ' : ' + coworkes[key]+'<br>');
+        }
+    </script>
+
+    <h2>Preperty & Method</h2>
+    <script>
+        coworkes.showAll = function(){
+            for(var key in this){
+                document.write(key + ' : ' + this[key]+'<br>');
+            }
+        }
+        coworkes.showAll();
+    </script> 
+-->
+    <h1><a href="index.html">WEB</a></h1>
+    <input id='night_day' value='night' type='button' onclick="nightDayhandler(this);">
+</body>
+</html>
