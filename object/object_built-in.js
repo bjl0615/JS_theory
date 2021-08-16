@@ -49,3 +49,11 @@ var MyMath = {
 console.log("MyMath.PI", MyMath.PI);
 console.log("MyMath.random()", MyMath.random());
 console.log("MyMath.floor(3.9)", MyMath.floor(3.9));
+
+MyMath_PI = Math.PI;
+function MyMath_random(){
+    return Math.random();
+}
+function MyMath_floor(val){
+    return Math.floor(val);
+}
