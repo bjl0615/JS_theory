@@ -6,8 +6,46 @@
         console.log("Math.PI", Math.PI) //파이 값을 출력을 해준다.
         console.log("Math.randon()", Math.random()); //랜덤 값을 출력한다.
         console.log("Math.floor(3.9), Math.floor(3.9)") //값을 반올림 한다.
+
+    이번에는 우리가 Math 객체의 기능과 똑같은 객체를 직접 만들어 보자.
+    객체 안에 포함된 함수를 우리는 메소드라고 부른다.
+        var MyMath = {
+            PI : Math.PI,
+            random:function(){
+                return Math.random();
+            }
+            floor:function(val){
+                return Math.floor(val);
+            }
+        }
+
+        console.log("MyMath.PI", MyMath.PI);
+        console.log("MyMath.random()", MyMath.random());
+        console.log("MyMath.floor(3.9)", MyMath.floor(3.9));
+    객체를 사용하지 않는다면 아래와 같은 모습이 될 것이다.
+        var MyMath_PI = Math.PI;
+        function MyMath_random(){
+            return Math.random();
+        }
+        function MyMath_floor(var){
+            return Math.floor(val);
+        }
+    객체를 사용하면 관련된 기능을 그룹화하여 편히하게 사용할 수 있다.
 */
 
 console.log("Math.PI", Math.PI);
-console.log("Math.random()",Math.random());
+console.log("Math.random()",Math.random()); //method
 console.log("Math.floor(3.9)", Math.floor(3.9));
+
+var MyMath = {
+    PI: Math.PI,
+    random: function(){
+        return Math.random();
+    },
+    floor: function(val){
+        return Math.floor(val);
+    }
+}
+console.log("MyMath.PI", MyMath.PI);
+console.log("MyMath.random()", MyMath.random());
+console.log("MyMath.floor(3.9)", MyMath.floor(3.9));
