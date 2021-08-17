@@ -57,6 +57,51 @@
             }
             var kim = new Person('kim',10,20);
             console.log('kim',kim);
+
+    ¸Þ¼Òµå ¸¸µé±â
+        1. prototypeÀ» ÀÌ¿ëÇØ Ãß°¡ÇÑ´Ù.
+            class Person{
+                constructor(name,first,second){ //¾à¼ÓµÈ ÀÌ¸§À¸·Î ¹Ù²Ù¸é ¾ÈµÈ´Ù.
+                    this.name = name;
+                    this.first = first;
+                    this.second = second;
+                    console.log('constructor');
+                }
+            }
+            Person.protutype.sum = function(){
+                return 'prototype:' + (this.first+this.second+this.third); 
+            }
+            var kim = new Person('kim',10,20);
+            console.log('kim',kim);
+        2. class ³»ºÎ¿¡ Á¤ÀÇÇÏ±â
+            class Person(){
+                constructor(name,first,second){ //¾à¼ÓµÈ ÀÌ¸§À¸·Î ¹Ù²Ù¸é ¾ÈµÈ´Ù.
+                    this.name = name;
+                    this.first = first;
+                    this.second = second;
+                }
+                sum(){
+                    return 'prototype:' + (this.first+this.second);
+                }
+            }
+            var kim = new Person('kim',10,20);
+            console.log('kim',kim);
+            console.log("kim.sum()",kim.sum());
+
+            var lee = new Person('lee',10,10);
+            console.log('lee',lee);
+            console.log("lee.sum()",lee.sum());
+        °°Àº class¿¡ ¼ÓÇØ ÀÖ´Â ¸ðµç °´Ã¼µéÀÌ °øÀ¯ÇÏ´Â ¸Þ¼Òµå ÀÓÀ» ¾Ë ¼ö ÀÖ´Ù.
+        
+        Æ¯Á¤ °´Ã¼ÀÇ ¸Þ¼Òµå¸¸ ¼öÁ¤ÇÏ°í ½Í´Ù¸é ±âÁ¸°ú ¶È°°Àº ¹æ¹ýÀ» »ç¿ëÇÏ¸é µÈ´Ù.
+            var kim = new Person('kim',10,20);
+            kim.sum = function(){
+                return 'this:' + (this.first+this.second);
+            }
+        ¾î¶² °´Ã¼ÀÇ Æ¯¼ºÀ» È£ÃâÇÏ¸é ÀÚ¹Ù½ºÅ©¸³Æ®´Â ±× °´Ã¼°¡ ÇØ´ç Æ¯¼ºÀ» °¡Áö°í ÀÖ´ÀÁö È®ÀÎÇÏ°í
+        ÀÖ´Ù¸é ±× Æ¯¼ºÀ» È£ÃâÇÑ´Ù. ¸¸¾à ¾ø´Ù¸é ±× °´Ã¼°¡ ¼ÓÇØ ÀÖ´Â class¿¡¼­ ÇØ´ç Æ¯¼ºÀ» °¡Á®¿Í 
+        È£­ŒÇÑ´Ù.
+        
 */
 class Person{
     constructor(name, first, second){
@@ -64,15 +109,19 @@ class Person{
         this.first = first;
         this.second = second;
     }
+    sum(){
+        return 'prototype : ' + (this.first+this.second);
+    }
 }
 
-var kim = new Person('kim', 10,20);
-console.log('kim', kim);
-
-
-// kim.sum = function(){
-//     return 'this : ' + (this.first+this.second);
+// Person.prototype.sum = function(){
+//     return 'prototype:' + (this.first+this.second);
 // }
-// var lee = new Person('lee', 10, 10);
-// console.log("kim.sum()",kim.sum());
-// console.log("lee.sum()",lee.sum());
+
+var kim = new Person('kim', 10,20);
+kim.sum = function(){
+    return 'this : ' + (this.first+this.second);
+}
+var lee = new Person('lee', 10, 10);
+console.log("kim.sum()",kim.sum());
+console.log("lee.sum()",lee.sum());
