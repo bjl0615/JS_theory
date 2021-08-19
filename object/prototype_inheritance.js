@@ -34,4 +34,25 @@
 
         자바스크립트에서 객체 지향은 어떻게 다른지 살펴보지
 
+        간단한 객체를 만들어 상속해보자.
+        _proto_라는 prototype link를 통해서 객체를 상속 받을 수 있다.
+            var superObj = {superVal:'super'}
+            var subObj = {subVal : 'sub'}
+            subObj.__proto__ = superObj;
+            console.log('subObj.subVal =>',subObj.subVal);
+            console.log('subObj.superVal =>',subObj.superVal);
+        객체의 속성을 바꿔도 __proto__의 속성은 바뀌지 않는다.
+        그렇기 떄문에 subObj,superVal의 값을 바꿔도 superObj.superVal()의 값은 유지된다.
+            subObj.superVal = 'sub';
+            console.log('superObj.superVal => ',superObj.superVal);
+            //superObj.superVal => super
+
 */
+
+var superObj = {superVal : 'super'}
+var subObj = {subVal : 'sub'}
+subObj.__proto__ = superObj;
+console.log('subObj.subVal => ', subObj.subVal); 
+console.log('subObj.superVal => ', subObj.superVal); 
+subObj.superVal = 'sub';
+console.log('superObj.superVal => ', superObj.superVal); 
