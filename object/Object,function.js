@@ -44,6 +44,25 @@
         console.log("sum.call(kim)",sum.call(kim,'=>')); //sum.call(kim) => 30
         console.log("sum.call(lee)",sum.call(lee,': ')); //sum.call(lee) : 20
     
+    지금까지 실행할 때 마다 어떤 함수의 this 값을 바꾸는, context를 바꾸는 call 이라는 함술에 대해서 알아봤다. 
+    만약 call처럼 실행할 때 마다 this를 변경하는 것이 아니라
+    내부적으로 고정시키고 싶다면 bind를 사용한다.
+    bind는 호출한 함수를 변경하는 것이 아니라 인자로 받은 조건을 만족하는 새로운 함수를 리턴해준다.
+        var kim = {name:'kim',first:10,second:20}
+        var lee = {name:'lee',frist:10,second:10}
+        lee.__proto__ = kim
+
+        function sum(prefix){
+            return prefix+(this.first+this.second);
+        }
+
+        //sum();
+        console.log("sum.call(kim)",sum.call(kim,'=>'));
+        console.log("sum.call(lee)",sum.call(kim,':'));
+
+        var kimSum = sum.bind(kim, '-> ');
+        console.log('kimSum()',kimSum());
+}
 */
 
 var kim = {name:'kim',first:10,second:20}
@@ -56,3 +75,6 @@ function sum(prefix){
 //sum();
 console.log("sum.call(kim)"+sum.call(kim, '=> '));
 console.log("sum.call(lee)"+sum.call(lee, ': '));
+var kimSum = sum.bind(kim, '-> ');
+console.log('kim.Sum()', kimSum());
+
