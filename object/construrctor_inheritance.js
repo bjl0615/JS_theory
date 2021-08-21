@@ -100,7 +100,21 @@
             console.log("kim.avg()", kim.avg());
             console.log("kim.consoructor", kim.constructro());
         이때 constructor를 출력해보면 PersonPlus가 아닌 Person으로 나오느 것을 확인할 수 있다.
+        
+        Person은 __proto__라는 프로퍼티를 톨해서 Person의 prototype 객체를 참조하고
+        Person의 prototype 객체는 constructor라는 프로퍼티를 통해서 Person 객체를 참조한다.(construrctor_inheritance5 참조)
+        그렇다면 만약 Person이라는 생성자를 통해서 생성된 kim이라는 객체에서 constructor을 호출한다면
+        어떤 값이 리턴 될까?
+        kim에는 constructor라는 프로퍼티가 없기 때문에 kim의 __proto__가 가리키는
+        Person의 prototype 객체의 constructor가 가리키는 Person이 리턴되게 된다.
 
+        즉 자바스크립트에서 constructor라는 프로퍼티는 여러 의미로 사용되는데
+        그 중에 하나는 어떠한 객체가 누그로부터 만들어졌는지를 알려주는 것이다.
+        또 new 키워드와 함께 constrictor()를 실행하면 constructor를 몰라도
+        새로운 객체를 생성할 수 있게 된다.
+            d = new Date()
+            d2 = new d.constructor()
+            
 */
 function Person(name,first,second){
     this.name = name;
