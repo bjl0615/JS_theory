@@ -113,23 +113,23 @@
             console.log("kim.avg()",kim.avg());
 */
 
-var superObj = {superVal : 'super'}
+// var superObj = {superVal : 'super'}
 // var subObj = {subVal : 'sub'}
 // subObj.__proto__ = superObj;
-var subObj = Object.create(superObj);
-superObj.subVal = 'sub';
-debugger;
-console.log('subObj.subVal => ', subObj.subVal); 
-console.log('subObj.superVal => ', subObj.superVal); 
-subObj.superVal = 'sub';
-console.log('superObj.superVal => ', superObj.superVal); 
+// var subObj = Object.create(superObj);
+// superObj.subVal = 'sub';
+// debugger;
+// console.log('subObj.subVal => ', subObj.subVal); 
+// console.log('subObj.superVal => ', subObj.superVal); 
+// subObj.superVal = 'sub';
+// console.log('superObj.superVal => ', superObj.superVal); 
 
 
-var kim = {
-    name : 'kim',
-    fitst : 10,second:20,
-    sum:function(){return this.fitst+this.second}
-}
+// var kim = {
+//     name : 'kim',
+//     fitst : 10,second:20,
+//     sum:function(){return this.fitst+this.second}
+// }
 
 // var lee = {
 //     name:'lee',
@@ -140,13 +140,43 @@ var kim = {
 // }
 // lee.__proto__ = kim;
 
-var lee = Object.create(kim);
-lee.name = 'lee';
-lee.first = 10;
-lee.second = 10;
-lee.avg = function(){
-    return (this.first+this.second)/2;
+// var lee = Object.create(kim);
+// lee.name = 'lee';
+// lee.first = 10;
+// lee.second = 10;
+// lee.avg = function(){
+//     return (this.first+this.second)/2;
+// }
+// console.log('lee.sum() :', lee.sum());
+// console.log('lee.avg() :', lee.avg());
+
+class Person{
+    constructor(name, first, second){
+        this.name = name;
+        this.first = first;
+        this.second =second;
+    }
+    sum(){
+        return this.first+this.second;
+    }
 }
-console.log('lee.sum() :', lee.sum());
-console.log('lee.avg() :', lee.avg());
+
+class PersonPlus extends Person{
+    constructor(name,first,second,third){
+        this.name = name;
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
+    sum(){
+        return super.sum+this.third;
+    }
+    avg(){
+        return (this.first+this.second+this.third)/3;
+    }
+}
+
+var kim = new PersonPlus('kim',10,20,30);
+console.log("kim.sum()"+kim.sum());
+console.log("kim.avg()"+kim.avg());
 
