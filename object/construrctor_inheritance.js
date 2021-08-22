@@ -114,7 +114,40 @@
         새로운 객체를 생성할 수 있게 된다.
             d = new Date()
             d2 = new d.constructor()
-            
+        
+        PersonPlus로 생성된 kim 객체의 constructor가 Person으로 나오는 문제가 있었다.
+        이유는 PersonPlus의 prototype을 Person.prototyped을 __proto__로 갖는 새로운 객체를 만들어 대체 했기 때문에
+        이전에 PersonPlus를 constructor로 갖는 PersonPlus의 prototype이 지워졌기 때문이다.
+        따라서 PersonPlus.prototype의 constructor를 PersonPlus로 지정해주면 된다.
+            function Person(name,first,second){
+                this.name = name;
+                this.first = first;
+                this.second = second;
+            }
+
+            Person.portotype.sum = function(){
+                return this.first + this.second;
+            }
+
+            functoin PersonPlus(name, first, second, third){
+                Person.call(this,name,first,second);
+                this.third = third;
+            }
+
+            PersonPlus.prototype = Object.create(Person.prototype);
+            PersonPlus.prototype.constructor = PersonPlus;
+
+            PersonPlus.prototype.avg = function(){
+                return (this.first+this.second+this.third)/3;
+            }
+
+            var kim = new PersonPlus('kim',10,20,30);
+            console.log("kim.sum()", kim.sum());
+            console.log("kim.avg()", kim.avg());
+            console.log("kim.constructor", kim.constructor);
+        사실 이러한 코드를 실제로 사용하는 것보다는 class를 사용하는 편이 더 깔끔하고 직관적이다.
+        하지만 class의 내부에 이러한 방식으로 동작된다는 것을 알고 이해했다면 자바스크립트의 상당히 중요하고 어려운 부분을 
+        이해하게되었다는 뜻과도 같다.
 */
 function Person(name,first,second){
     this.name = name;
@@ -131,10 +164,10 @@ function PersonPlus(name, first, second, third){
 // PersonPlus.prototype.__proto__ = Person.prototype;
 PersonPlus.prototype = Object.create(Person.prototype);
 PersonPlus.prototype.constructor = PersonPlus;
-
 PersonPlus.prototype.avg = function(){
     return (this.first+this.second+this.third)/3;
 }
+
 var kim = new PersonPlus('kim',10,20,30);
 console.log("kim.sum()", kim.sum());
 console.log("kim.avg()", kim.avg());
