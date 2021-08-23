@@ -11,4 +11,4 @@ memberObject.desingner = 'leezche';
 console.log("memberObject.desingner", memberObject.desingner);
 console.log("memberObject['desingner']", memberObject['desingner']);
 delete memberObject.manager
-console.log('after delete memberObject.manager', memberObject.manager)
+console.log('after delete memberObject.manager', memberObject.manager);
