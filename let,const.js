@@ -219,3 +219,57 @@ log(sports);
         - 스코프에 같은 이름 사용 불가
 */
 
+/*
+    let 변수와 var 변수 차이
+        - for() 문에서 반복할 때마다.
+            - var 변수는 스코프를 갖지 않음
+            - let 변수는 스코프를 가짐
+
+        var 변수와 스코프
+
+            선택 클릭
+                - 축구
+                - 농구 
+                - 야구
+            
+            **html 파일**
+            <ul class=sports>
+                <li>축구</li>
+                <li>농구</li>
+                <li>야구</li>
+            </ul>
+*/
+var node = document.querySelector(".sports");
+for( var k = 0; k < node.children.length; k++){
+    node.children[k].onClick = function(event){
+        event.target.style.backgroundColor = "yellow";
+        log(k);
+    };
+};
+// 1. 어떤 갓을 클릭하더라도 항상 for() 문이 끝났을 때의 값인 3을 출력한다.
+// 2. var k = 0;에서 k 변수의 스코프는 함수이다.
+
+/*
+        let 변수와 스코프
+            선택 클릭
+                    - 축구
+                    - 농구 
+                    - 야구
+                
+                **html 파일**
+                <ul class=sports>
+                    <li>축구</li>
+                    <li>농구</li>
+                    <li>야구</li>
+                </ul>
+*/
+var node = document.querySelector(".sports");
+for( let k = 0; k < node.children.length; k++){
+    node.children[k].onClick = function(event){
+        event.target.style.backgroundColor = "yellow";
+        log(k);
+    };
+};
+// 1. var k = 0;을 let k = 0; 으로 바꾸었다.
+// 2. 이벤트를 설정할 때의 k 값을 출력한다.
+
