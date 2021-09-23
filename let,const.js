@@ -346,4 +346,36 @@ log(this.music, this.sports);
 /*
         - 글로벌 오브젝트에서
             - var과 let 변수가 설정되는 위치 구조
+
+    js 파일 다수 사용
+        - 모든 js 파일에서
+            - 글로벌 오브젝트에 작성한 var 변수와 let 변수를 공유
+        - 블록 안에 작성하면 공유하 않는다.
+
+    다수의 js 파일 사용 정리
+        - 글로벌 오브젝트에 작성
+*/
+var globalVar = "var 변수";
+let globalLet = "let 변수";
+{
+    let globalBlock = "bloack변수";
+};
+/*
+            - var 변수 : window에 설정, 공유
+            - let 변수 : Scriptdp 설정, 공유
+                - window.sports = {}처러 의도적으로 작성하지 않아도 됨
+            - { let 변수 } : Block에 설정, 공유하지 않음
+                - 글로벌 오브젝트에서만 사용하는 로컬 변수로 사용
+        - 함수에 작성
+*/
+function showLocal(){
+    var localVar = "var 변수";
+    let localLet = "let 변수";
+    {
+        let bloackLet = "block 변수";
+    };
+};
+/*
+            - var 변수, let 변수 : Local
+            - {let 변수 }: Block;
 */
