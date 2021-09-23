@@ -378,4 +378,27 @@ function showLocal(){
 /*
             - var 변수, let 변수 : Local
             - {let 변수 }: Block;
+
+    호이스팅
+        - ES5의 실행 콘텍스트 처리 순서
+            1. 함수 선언문 설정
+            2. 변수 이름을 바인등 변숫값을 undefined
+            3. 소스 코드 실행
 */
+log("music 변수 : ", music);
+var music = "음악";
+// 1. log("music 변수", music); 코드 이래에 var music = "음악"이 있다.
+// 2. 변수가 아래에 있지만 식별자 해결을 할 수 있다. 단, 이 위치에서 music 값은 undefined
+// 3. 이것을 호이스팅이라고 한다.
+// 4. 식별자 해결을 하지 못하면 에러가 발생한다.
+
+/*
+        - let 변수는 호이스팅Hoisting되지 않음
+            - 즉, let 변수 앞에서 변수 사용 불가  
+*/
+try{
+    log(sports);
+}catch(e){
+    log("호이스팅 불가");
+};
+let sports = "축구";
