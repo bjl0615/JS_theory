@@ -133,4 +133,89 @@ switch (item) {
 // 3. 그래서 주석을 처리했다.
 // 4. 살행에러가 아니라 컴파일 에러
 
+/*
+    let 변수 개요
+        - let book = "책";
+            - 블록block 스코프를 가진 변수
+            - 변수가 선언된 블록이 스코프
+        - 스코프 적용 기준
+            - 블록 {}, 문, 표현식
+*/
+let sports = "축구";
+if(sports){
+    let sports = "농구";
+    log("안: " , sports);
+}
+log("밖 : " , sports);
+/*
+        - 블록{} 안과 밖이 스코프가 다름
+            - 변수 이름이 같아도 값이 대체되지 않음 
+    let 변수 선언
+        - Syntax
+            - let name1 [=value1] [,name2 = [value2]]
+        - name1, name2에 변수 이름 작성
+            - 식별자로 사용
+            - []는 생략 가능을 나타냄
+            - 값을 할당하지 않아도 됨
+*/
+let book;
+let one,two;
+// 1. let book; 값을 할당하지 않고 변수만, 선언할 수 있다. 초깃값으로 undefined가 할당된다.
+// 2. let one,two; 콤마로 구분하여 다수를 선어할 수 있다.
+
+/*
+        - value1, value2에 초깃값 작성
+            - 표현식 작성 가능, 평가 결과 사용
+*/
+let book = "책";
+let one = 1, two = (10+20);
+// 1. let book="책";  변수를 선언하고 초깃값을 할당했다.
+// 2. let one = 1, two = (10+20); 콤마로 구분하여 다수의 변수를 선언하고 값을 할당한 형태이다.
+// 3. let five = 5, let six = 6; SyntaxError 발생
+// 4. let five = 5, var six = 6; 콤마로 구분하여 let과 var을 같이 사용할 수 없다.
+
+/*
+    블록 스코프
+        - 블록 기준
+            - 중괄호 { 코드 }
+            - function name() { 코드 }
+            - if( a === 1){ 코드 }
+        - 블록 안과 밖이 스코프가 다름
+            - 변수 이름이 같아도 값이 대체되지 않음
+*/
+let sports = "축구";
+if(sports){
+    let sports = "농구";
+    log("안 : " , sports);
+};
+log("밖 : ", sports);
+// 1. if(sports){...} 블록 {} 안과 밖에 let sports를 작성했으며 스코프가 다르므로
+// 2. 변숫값에 대체되지 않고 유지된다.
+// 3. 블락 안에서 블록 밖의 변수는 접근할 수 있지만
+// 4. 블록 밖에서 블록 안의 변수는 접근할 수 없다.
+
+let sports = "축구";
+sports = "농구";
+log(sports);
+{
+    let sports = "탁구";
+    log(sports);
+};
+
+let sports = "축구";
+sports = "농구"
+log(sports);
+
+{
+    let sports = "탁구";
+    log(sports);
+};
+
+// 1. sports = "농구";  스코프에서 sports 식별자를 해결한다. 바로 앛에 있으므로 값을 할당한다.
+// 2. let sports = "배구"; let을 사용하여 같은 스코프에 같은 이름의 변수를 선얼할 수 없다.
+// 3. { let sports = "탁구"; } 블록()을 사용했으며 스코프가 다르므로 let을 사용하여 변수를 선언할 수 있다.
+
+/*
+        - 스코프에 같은 이름 사용 불가
+*/
 
