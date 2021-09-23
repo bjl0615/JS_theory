@@ -402,3 +402,32 @@ try{
     log("호이스팅 불가");
 };
 let sports = "축구";
+
+
+/*
+    const 변수
+        구문: name1 [=value1] [,name2 [= value2]]
+            - 값을 발꿀 수 없는 변수 선언
+            - name1에 변수 이름 작성, 식별자로 사용
+*/
+const sports = "축구";
+try{
+    sports = "농구";
+}catch(e) {
+    log("const 할당 불가");
+};
+// 1. const sports = "축구"; sports를 const로 선언하고 값 할당
+// 2. try {sports = "농구"; try 블록도 별도의 스코프이지만 const, let을 작성하지 않았으므로
+// 3. sports 변수에 값을 할당하게 된다. sports가 const 변수이므로 에러 발생
+
+/*
+            - JS에서 상수는 대문자 사용이 관례
+*/
+const bouns = 100;
+const POINT = 200;
+// 1. const가 상수이지만 값 형태에 따라 바꿀 수도 있다. 
+// 2. const POINT = 200; 대문자 사용이 코딩 관레이므로 괜찮다.
+
+/*
+            - 우선 let이 아닌 const 사용 가능을 검토
+*/
