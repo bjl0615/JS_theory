@@ -329,3 +329,21 @@ book.show();
 // 2. 함수 밖 스코프의 변수를 상용하듯이 show()의 스코프인 book 오브젝트에 설정된 스코프의 this를 화살표 함수에서 this로 사용하기 때문이다.
 // 3. book 오브젝트가 글로벌 오브젝트에 성정되므로 this가 window 오브젝트를 참조하게 된다.
 
+/*
+    let 변수와 this
+        - 글로벌 오브젝트에서
+            - let 변수를 this로 참조 불가
+*/
+var music = "음악";
+let sports = "축구";
+log(this.music, this.sports);
+// 1. 현재 위치는 글로벌 오브젝트
+// 2. var music = "음익"; window 오브젝트에 설정된다.
+// 3. let sports = "축구"; window 오브젝트에 설정되지 않는다.
+// 4. this.music에서 this가 window 오브젝트를 참죠하며 music이 window 오브젝트에 설정되어 있으므로 음악이 출력된다.
+// 5. this.sports에서 sports가 window에 설정되지 않으므로 undefined가 출력된다.
+
+/*
+        - 글로벌 오브젝트에서
+            - var과 let 변수가 설정되는 위치 구조
+*/
