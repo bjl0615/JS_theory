@@ -430,4 +430,31 @@ const POINT = 200;
 
 /*
             - 우선 let이 아닌 const 사용 가능을 검토
+            - cosnt 변수 전체를 바꿀 수는 없지만
+            - Object의 프로퍼디 값을 바꿀 수 있음
 */
+const book = {title:"책"};
+try{
+    book = {title: "음악 책"};
+} catch (e) {
+    log("const 전체 할당 불가");
+};
+book.title = "미술 책";
+log(book.title);
+// 1. book = {title: "음악 책"}; book에 값을 할당하면 에러 발생 book 전체를 바꿀 수 없다.
+// 2. book.title = "마술 책"; 플로퍼티 값은 변경할 수 있다.
+// 3. const 변수의 변경 불가는 book에 값을 할당하는 것을 뜻한다.
+
+/*
+            - 배열의 엘리먼트 값도 바꿀 수 있음
+*/
+const book = ["책"];
+try{
+    book = ["음악 책"];
+}catch(e){
+    log("cosnt 전체 할당 불가");
+};
+book[0] = "미술 책";
+log(book[0]);
+// 1. book = ["음악 책"]; book에 값을 할당하면 에러 발생
+// 2. book[0] = "미술 책"; 엘리먼트 값은 변경할 수 있다.
