@@ -114,3 +114,54 @@ const point = () => 100;
     // 3. 오른쪽의 point 함수 구조를 전개하면 
     //     - arguments가 표시는 된다.
 }
+
+/*
+    화살표 함수와 this
+        - strict 모드에서 함술르 호출할 때
+            - 함수 앞에 오브젝트 작성은 필수
+*/
+"use strict"
+function book(){
+    function getPoint(){
+        log(this);
+    }
+    getPoint();
+};
+window.book;
+// 1. strict 모드에서는 window.book()처럼 호출하는 함수 앞에 오브젝트를 작성해야 한다. 이렇게 하지 않으면 book() 함수 안에서 this 값이 undefined이다.
+// 2. 또한, getPoint()처럼 window를 앞에 작성하지 않으면 getPoint() 안에서 this 값이 undefined이다.
+// 3. 이를 피하기 위해 window getPoint()로 호출하면 window 오브젝트에 getPoint()가 없으므로 에러가 난다.
+// 4. strict 모드의 함수에서 this를 참조하기 위해서는 this를 별도롤 저장한 후 사용해야 하는 번거롭다.
+
+/*
+            - 화살표 함수로 해결
+*/
+"use strict"
+var point = 100;
+function sports(){
+    const getPoint = () => {
+        log(this.point);
+    };
+    getPoint();
+};
+window.sports();
+// 1. 화살표 함수로 작성하면 getPoint()로 호출할 수 있다.
+// 2. 또한, getPoint() 화살표 함수 안에서 this가 undefined가 아니라 글로벌(window) 오브젝트를 참조한다.
+// 3. var point = 100을 작성했으므로 100이 출력된다.
+
+/*
+        - 화살표 함수에서 this가 글로벌 오브젝트 참조
+    this가 정적 스코프 참조
+        - 화살표 함수에서 정적 스코프의 this를 사용
+        - 정적(렉시컬Lexical) 스코프란
+            - 엔진이 해석할 때, 화살표 함수를 만나면
+            - function 오브젝트를 생성하고
+            - 화살표 함수가 속한 스코프를 생성한 오브젝트에 바인딩
+        - 오브젝트에 비인딩된 스코프의 this를 
+            - 화살표 함수에서 this로 사용        
+*/
+var title = "책";
+const book = {
+    show: () => log(this.title)
+};
+book.show();
