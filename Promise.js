@@ -126,4 +126,124 @@ $.get('url', function(response) {
     먼저 ajax 통신으로 받은 데이터를 paeseValue() 메서드로 파싱 한다.
     parseValueDone()에 파싱 한 결과값은 id가 잔달되고 auth() 메서드가 실행된다.
     auth() 메서드로 인증을 고치고 나면 콜백 함수 authDon() 이 실행 된다. 인증 결과 값인 result로 display()를 호출하면 마지막으로 displayDone() 메서드가 수행되면서 text가 콘솔에 출력도니다.
+
+    Promise란?
+        프로마스는 자바스크립트 비동기 처리에 사용되는 객체이다. 
+
+    Promise가 필요한 이유
+         프로미스는 주로 서버에서 받아온 데이터를 화면에 표실할 때 사용한다.
+         일반적으로 웹 애플리케이션을 구현할 때 서버에서 데이터를 요청하고 받아오기 위해 
+         아래와 같은 API를 사용한다.
 */
+$.get('url 주소/pruduct/1', function(response) {
+
+});
+
+/*
+    위 API가 실행되면 서버에다가 '데이터 하나 보내주세요'라는 요청을 보낸다.
+    그런데 여기서 데이터를 받아오기도 전에 마치 데이터를 다 받아온 것 마냥 화면에 
+    데이터를 표시하려고 하면 오류가 발생하거나 빈 화면이 뜬다. 
+    이와 같은 문제점을 해결하기 위한 방법 중 하나가 프로미스이다.
+
+    프로미스 코드 - 기초
+        그럼 프로미스가 어떻게 동작하는지 이해하기 위해 예제 코드를 보자 먼저 아래 코드는 간단한 ajax 통신 코드이다.
+*/
+function getData(callbackFunc) {
+    $.get('url 주소/product/1' , function(reponse){
+        callbackFunc(response); // 서버에서 받은 데이터 response를 callbackFunc() 함수에 넘겨줌
+    });
+}
+
+getData(function(tableData) {
+    console.log(tableData);  // $.get()의 response 값이 tableData에 전달 됨
+})
+
+/*
+    위 코드는 제이쿼리의 ajax 통신 API를 이용하여 지정된 utl에서 1번 상품 데이터를 받아오는 코드이다.
+    비동기 처리를 위해 프로미스 대신에 콜백 함수를 사용했다.
+
+    위 코드에 프로미스를 적용하면 아래와 같은 코드가 된다.
+*/
+function getData(callback) {
+    // new Promise() 추가
+    return new Promise(function(resolve, reject) {
+        $.get('url 주소/product/1' , function(response) {
+            // 데이터를 받으면 resolve() 호출
+            resolve(response);
+        });
+    });
+}
+
+// getData()의 실행이 끝나면 호출되는 then()
+getData().then(function(tableData) {
+    // resolve() 의 결과 값이 여기로 전달 됨
+    console.log(tableData) // $.get()의 response 값이 tableData에 전달 됨
+});
+
+/*
+    콜백 함수로 처리하던 구조에서 new Promise(), resolve(), then()와 같은 프로미스 API를 사용한 구조로 비뀌었
+    다. 여기서 new Promise()는 좀 이해가 가는데 resolve(), then() 은 뭐하는 것일 까? 
+
+    프로미스의 3가지 상태(states)
+        프로미스를 사용할 때 알아야 하는 가장 기본적인 개념이 바로 프로미스의 상태(states)이다.
+        여기서 말하는 상태란 프로미스의 처리 과정을 의미한다.
+        new Promist()로 프로미스를 생성하고 종료될 때 3가지 상태를 갖는다.
+            - Pending(대기) : 비동기 처리 로직이 아직 완료되지 않은 상태
+            - Fulfilled(이행) : 비동기 처리가 완료되어 프로미스가 결과 값을 반환해준 상태
+            - Rejected(실패) : 비동기 처리가 실패하거나 오류가 발생한 상태
+        Pending(대기)
+            먼저 아래와 같이 new Promise() 메서드를 호출하면 대기(Pending) 상태가 된다. 
+*/
+new Promise();
+
+/*
+    new Promise() 메서드를 호출할 때 콜백 함수를 선언할 수 있고, 콜백 함수의 인자는 resolve, reject이다.
+*/
+new Promise(function(resolve, reject) {
+    // ...
+  });
+
+  /*
+    Fulfilled(이행)
+        여기서 콜백 함수의 인자 resolve를 아래와 같이 실행하면 이행(Fulfilled) 상태가 된다.
+  */
+ new Promise(function(resolve, reject) {
+     resolve();
+ })
+
+ /*
+    그리고 이행 상태가 되면 아래와 같이 then()을 이용하여 처리 결과 값을 받을 수 있다.
+ */
+function getData() {
+    return new Promise(function(resolve, reject) {
+        var data = 100;
+        resolve(data);
+    });
+}
+
+// resolve()의 결과 값 data를 resolvedData로 받음
+getData().then(function(resolveData){
+    console.log(resolveData); // 100
+})
+// ※ 프로미스의 '이행' 상태를 좀 다르게 표현해보면 '완료' 이다.
+
+/*
+    Rejected(실패)
+        new Promise()로 프로미스 객체를 생성하면 콜백 함수 인자로 resolve와 reject를 사용할 수 있다고 했다.
+        여기서 reject를 아래와 같이 호출하면 실해(Rejected) 상태가 된다.
+*/
+new Promise(function(resolve, reject) {
+    reject();
+});
+
+// 그리고, 실패 상태가 되면 실피한 이유(실패 처리의 결과 값)를 catch()로 받을 수 있다.
+function getData() {
+    return new Promise(function(resolve, reject) {
+        reject(new Error("Request is failed"));
+    });
+}
+
+// reject()의 결과 값 Error를 err에 받음
+getData().then().catch(function(err) {
+    console.log(err); // Error : Request is failed
+})
